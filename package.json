@@ -1,0 +1,11 @@
+{
+  "name": "node-chat",
+  "version": "1.0.0",
+  "description": "node chat test proj",
+  "main": "index.js",
+  "author": "ilagnev",
+  "license": "MIT",
+  "dependencies": {
+    "mime": "^2.0.3"
+  }
+}

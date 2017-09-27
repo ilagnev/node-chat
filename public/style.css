@@ -1,0 +1,68 @@
+html {
+    font-size: 10px;
+    font-family: 'helvetica neue', sans-serif;
+    /* box-sizing: border-box; */
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    /* padding: 1rem; */
+    display: flex;
+    flex-direction: row;
+}
+h1 {
+    margin: 0;
+    padding: 1rem 0 1rem 5rem;
+    font-size: 3rem;
+}
+
+.main-frame {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+    #messages {
+        flex: 1;
+        margin: .5rem;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: .5rem;
+        list-style: none;
+    }
+        #messages li {
+            font-size: 1.5rem;
+            margin: .5rem 0;
+            padding: .3rem;
+            background: #F7F7F7;
+        }
+
+    .main-frame form {
+        margin: 0;
+        padding: .5rem;
+    }
+        #message {
+            width: 100%;
+            font-size: 3rem;
+            box-sizing: border-box;
+        }
+
+#rooms {
+    margin: 0;
+    padding: 5rem .5rem 1rem 0;
+    text-align: right;
+    list-style: none;
+    flex: 1 20%;
+    font-size: 2rem;
+}
+    #rooms li {
+        margin: .5rem 0;
+    }
+    #rooms a {
+        text-decoration: none;
+        color: royalblue;
+        border-bottom: .2rem dashed royalblue;
+    }
+    #rooms a:hover {
+        color: cornflowerblue;
+    }
