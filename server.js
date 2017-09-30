@@ -1,4 +1,5 @@
 const http = require('http');
+const chatServer = require('./libs/chat-server');
 const fs = require('fs');
 const path = require('path');
 const mime = require('mime');
@@ -10,13 +11,13 @@ const server = http.createServer();
 // or return 404 page
 server.on('request', (req, res) => {
     const filePath = './public/' + (req.url == '/' ? 'index.html' : req.url);
-    console.log('request: ' + req.url + '\n' + 'path: ' + filePath + '\n');
+    //console.log('request: ' + req.url + '\n' + 'path: ' + filePath + '\n');
 
     fs.exists(filePath, exist => {
         exist ? sendFile(res, filePath) : send404(res);
     });
 });
-function sendFile(res, filePath){
+function sendFile(res, filePath) {
     if (0 && cache[filePath]) {// check cache
         res.writeHead(200, {'Content-type': cache[filePath].mime});
         res.end(cache[filePath].content);
@@ -35,7 +36,7 @@ function sendFile(res, filePath){
         });
         // append to cache
         fileStream.on('end', () => {
-            console.log(filePath + ': fully red, add to cache\n');
+            //console.log(filePath + ': fully red, add to cache\n');
             cache[filePath] = fileCacheObj;
         });
         // handle error?
@@ -51,7 +52,10 @@ function send404(res){
     res.end('error 404: file not found');
 }
 
-// start server
+// listen sockets
+chatServer.listen(server);
+
+// start static server
 server.listen(3000, () => {
-    console.log('sever started');
+    console.log('sever started: localhost:3000');
 });

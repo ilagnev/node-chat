@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Chat rooms</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="socket.io.js"></script>
     <script type="text/javascript" src="main.js"></script>
 </head>
 <body>
@@ -11,12 +12,10 @@
         <h1>Welcome to chat rooms</h1>
 
         <ul id="messages">
-            <li>message</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo cum iure, quia quaerat, illo quisquam, facilis commodi distinctio libero eos ipsa quibusdam nesciunt repellat eligendi sit. Saepe, rerum? Nisi, temporibus.</li>
         </ul>
 
-        <form action="">
-            <input type="text" name="message" id="message">
+        <form id="message-form" action="#blackhole" autocomplete="off">
+            <input type="text" name="message" id="message-input">
         </form>
     </div>
 
