@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // send message to server
 function sendMessage(message) {
+	// parse commands
+	
 	socket.emit('message', {
 		'text': message
 	});

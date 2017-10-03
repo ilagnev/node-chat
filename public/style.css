@@ -47,11 +47,15 @@ h1 {
     #message-form {
         margin: 0;
         padding: .5rem;
+        display: flex;
     }
         #message-input {
             width: 100%;
             font-size: 3rem;
             box-sizing: border-box;
+        }
+        #message-form button {
+            font-size: 2.5rem;
         }
 
 #rooms {
