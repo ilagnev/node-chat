@@ -1,5 +1,5 @@
 const http = require('http');
-const chatServer = require('./libs/chat-server');
+const chatServer = require('./lib/chat-server');
 const fs = require('fs');
 const path = require('path');
 const mime = require('mime');
