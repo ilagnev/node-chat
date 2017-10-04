@@ -8,21 +8,22 @@
     <script type="text/javascript" src="main.js"></script>
 </head>
 <body>
-    <div class="main-frame">
-        <h1>Welcome to chat rooms</h1>
+    <header>Free chat rooms! 😜</header>
+    <div class="wrapper">
+        <div class="main-frame">
+            <ul id="messages"></ul>
 
-        <ul id="messages">
-        </ul>
-
-        <form id="message-form" action="#blackhole" autocomplete="off">
-            <input type="text" name="message" id="message-input"><button>send</button>
-        </form>
+            <form id="message-form" action="#blackhole" autocomplete="off">
+                <input type="text" name="message" id="message-input">
+                <button>send</button>
+            </form>
+        </div>
+        <div class="side-bar">
+            <ul id="rooms"></ul>
+            <ul id="members">
+                <li>user</li>
+            </ul>
+        </div>
     </div>
-
-    <ul id="rooms">
-        <li><a href="#test">test</a></li>
-        <li><a href="#show">show</a></li>
-    </ul>
-
 </body>
 </html>
