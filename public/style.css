@@ -32,11 +32,11 @@ header {
         flex: 1;
         margin: .5rem;
         padding: 1rem;
-        border: 1px solid #ccc;
-        border-radius: .5rem;
         list-style: none;
         overflow: scroll;
         scroll-behavior: smooth;
+        border: 1px solid #ccc;
+        border-radius: .5rem;
         box-shadow: 0 0px 5px #eee;
     }
         #messages li {
@@ -68,24 +68,32 @@ header {
     display: flex;
     flex-direction: column;
 }
-    #rooms {
-        margin: 0;
-        padding: 5rem .5rem 1rem 0;
-        text-align: right;
+    .side-bar ul {
+        margin: .3rem;
+        padding: .5rem;
         list-style: none;
         font-size: 2rem;
+        flex: 1 auto;
+        
+        overflow: scroll;
+        scroll-behavior: smooth;
+        border: 1px solid #ccc;
+        border-radius: .5rem;
+        box-shadow: 0 0px 5px #eee;
     }
-        #rooms li {
-            margin: .5rem 0;
-        }
+    .side-bar ul li {
+        padding: 0;
+        margin: .5rem;
+    }
+    /* #rooms {} */
         #rooms a {
             text-decoration: none;
             color: royalblue;
-            border-bottom: .2rem dashed royalblue;
+            display: block;
+            /* border-bottom: .2rem dashed royalblue; */
         }
         #rooms a:hover {
+            text-decoration: underline;
             color: cornflowerblue;
         }
-    #members {
-        list-style: none;
-    }
+    /* #members {} */

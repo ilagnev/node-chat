@@ -2,8 +2,10 @@ let socket = null;
 
 // start the app
 document.addEventListener('DOMContentLoaded', () => {
+	// start params
 	const initialParams = {};
 	if (localStorage.name) initialParams.name = localStorage.name;
+	if (localStorage.room) initialParams.room = localStorage.room;
 
 	socket = io.connect('', initialParams);
 	ChatApp();
@@ -40,20 +42,26 @@ function ChatApp() {
 		ChatApp.updateMembers(info.members);
 	});
 	
-	socket.on('member-leave', (member) => {
-		console.log('member-leave: ', member);
+	socket.on('member-leave', (info) => {
+		console.log('member-leave: ', info);
 		ChatApp.displayMessage(
-			member.name + ' leave the room', 
+			info.name + ' leave the room', 
 			'info'
 		);
+
+		// update users list
+		ChatApp.updateMembers(info.members);
 	});
 	
-	socket.on('member-rename', (name) => {
-		console.log('member-rename: ', name);
+	socket.on('member-rename', (info) => {
+		console.log('member-rename: ', info);
 		ChatApp.displayMessage(
-			name.old + ' renamed to ' + name.new, 
+			info.old + ' renamed to ' + info.new, 
 			'info'
 		);
+
+		// update users list
+		ChatApp.updateMembers(info.members);
 	});
 
 	socket.on('rooms-update', (rooms) => {
@@ -94,20 +102,25 @@ ChatApp.handleSubmit = () => {
 ChatApp.processCommand = (args) => {
 	console.log('process command: ', args)
 	switch (args[0]) {
-		case '/name':// change name
-			//socket.emit('change-name', args[1]);
-			ChatApp.changeRoom(args[1]);
+		case '/name':
+			ChatApp.changeName(args[1]);
 			break;
-		case '/room':// change room
-			socket.emit('change-room', args[1]);
+		case '/room':
+			ChatApp.changeRoom(args[1]);
 			break;
 		default:
 			alert('unknow command: ' + args[0]);
 	}
 }
 
+ChatApp.changeName = (name) => {
+	socket.emit('change-name', name);
+	localStorage.name = name;
+}
+
 ChatApp.changeRoom = (room) => {
-	socket.emit('change-name', room);
+	socket.emit('change-room', room);
+	localStorage.room = room;
 }
 
 // send message to server
@@ -146,7 +159,7 @@ ChatApp.updateRooms = (roomsList) => {
 	// attach click event to change room
 	rooms.querySelectorAll('a')
 		.forEach(link => link.addEventListener('click', (e) => {
-			//console.log(link);
+			console.log(link);
 			ChatApp.changeRoom(link.innerText);
 		}));
 }
