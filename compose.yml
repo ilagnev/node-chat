@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  node-chat:
+    image: node-chat:latest
+    build:
+      context: .
+      dockerfile: docker/dockerfile
+    expose:
+      - "3000"
+    environment:
+      - VIRTUAL_HOST=chat.ilagnev.com
+      - NODE_ENV=production
+    network_mode: "bridge"

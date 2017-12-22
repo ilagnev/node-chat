@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "node chat test proj",
   "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "author": "ilagnev",
   "license": "MIT",
   "dependencies": {

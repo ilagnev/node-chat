@@ -1,15 +1,15 @@
-FROM node:latest
+FROM node:8-alpine
 
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# Install app dependencies
-#COPY package.json /usr/src/app/
-#RUN npm install
-
 # Bundle app source
-COPY . /usr/src/app
+COPY package.json server.js /usr/src/app/
+COPY lib /usr/src/app/lib
+COPY public /usr/src/app/public
+RUN yarn
 
+# run
 EXPOSE 3000
-CMD [ "node", "server.js" ]
+CMD [ "yarn", "start" ]
