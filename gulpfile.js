@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const spawn = require('child_process').spawn;
-let node;
+const node;
 
 gulp.task('copy-socket', () => {
 	gulp.src('node_modules/socket.io-client/dist/socket.io.js*')

@@ -17,17 +17,18 @@ server.on('request', (req, res) => {
         exist ? sendFile(res, filePath) : send404(res);
     });
 });
+
 function sendFile(res, filePath) {
     if (0 && cache[filePath]) {// check cache
         res.writeHead(200, {'Content-type': cache[filePath].mime});
         res.end(cache[filePath].content);
     } else {
         let fileCacheObj = {
-            content: ''
+            content: '',
+            mime: mime.getType(filePath),// determine mime type
         };
-
-        // determine mime type
-        fileCacheObj.mime = mime.getType(filePath);
+        
+        // set response content type
         res.writeHead(200, {'Content-Type': fileCacheObj.mime});
 
         const fileStream = fs.createReadStream(filePath);
@@ -47,6 +48,7 @@ function sendFile(res, filePath) {
         fileStream.pipe(res);
     }
 }
+
 function send404(res){
     res.writeHead(404, {'Content-Type': 'text/plain'})
     res.end('error 404: file not found');
